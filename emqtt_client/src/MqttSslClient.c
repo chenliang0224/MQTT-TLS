@@ -242,7 +242,7 @@ int MqttSslClientInit(void)
     int ret;
     uint32_t flags;
     const char *pers = "mqtt_ssl_client1";
-	const char* test = "test publish";	
+	const char* test = "mqtt client A";	
 
     //Initialize the RNG and the session data
     ssl_init(&ssl);
@@ -341,9 +341,9 @@ int MqttSslClientInit(void)
 	PTmqtttenter();
 	mqtt_connect((mqtt_broker_handle_t *)PTMqttGetBroker());
     DEBUG_INFO("mqtt_connect");
-	mqtt_subscribe((mqtt_broker_handle_t *)PTMqttGetBroker(), MQTTSUBTOPIC, 0);
+	//mqtt_subscribe((mqtt_broker_handle_t *)PTMqttGetBroker(), MQTTSUBTOPIC, 0);
     mqtt_subscribe((mqtt_broker_handle_t *)PTMqttGetBroker(), MQTTSUBTOPIC1, 0);
-	mqtt_publish((mqtt_broker_handle_t *)PTMqttGetBroker(), MQTTPUBTOPIC, test, strlen(test), 0);
+	//mqtt_publish((mqtt_broker_handle_t *)PTMqttGetBroker(), MQTTPUBTOPIC, test, strlen(test), 0);
 
    pthread_t MqttPingid;
    pthread_t MqttSslClientId;
@@ -352,8 +352,8 @@ int MqttSslClientInit(void)
     
    while(1)   {
        mqtt_ping((mqtt_broker_handle_t *)PTMqttGetBroker());
-       mqtt_publish((mqtt_broker_handle_t *)PTMqttGetBroker(), MQTTPUBTOPIC, test, strlen(test), 0); 
-       sleep(30);
+       //mqtt_publish((mqtt_broker_handle_t *)PTMqttGetBroker(), MQTTSUBTOPIC1, test, strlen(test), 0); 
+       sleep(3);
    }
 
 exit:

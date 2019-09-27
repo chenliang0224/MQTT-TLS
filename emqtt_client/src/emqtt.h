@@ -17,7 +17,7 @@ typedef unsigned short uint16;
 
 
 #define SERVER_PORT 8883
-#define SERVER_NAME "172.16.8.150"
+#define SERVER_NAME "172.16.8.168"
 #define GET_REQUEST "GET / HTTP/1.0\r\n\r\n"
 #define DEBUG_LEVEL 2
 
